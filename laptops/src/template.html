@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>14 寸轻薄本对比（≤6000 元，办公 + AI）</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --fg: #141414;
+      --fg-2: rgba(20, 20, 20, 0.74);
+      --fg-3: rgba(20, 20, 20, 0.6);
+      --fg-4: rgba(20, 20, 20, 0.36);
+      --fill-2: rgba(20, 20, 20, 0.08);
+      --fill-4: rgba(20, 20, 20, 0.035);
+      --stroke-2: rgba(20, 20, 20, 0.12);
+      --stroke-3: rgba(20, 20, 20, 0.08);
+      --link: #1f6feb;
+      --info: #2e79b5;
+      --info-bg: rgba(46, 121, 181, 0.07);
+      --warning: #b8641f;
+      --warning-bg: rgba(240, 160, 64, 0.1);
+      --success: #1f8a65;
+      --success-bg: rgba(31, 138, 101, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #181818;
+        --fg: #f0f0f0;
+        --fg-2: rgba(240, 240, 240, 0.74);
+        --fg-3: rgba(240, 240, 240, 0.6);
+        --fg-4: rgba(240, 240, 240, 0.36);
+        --fill-2: rgba(240, 240, 240, 0.1);
+        --fill-4: rgba(240, 240, 240, 0.04);
+        --stroke-2: rgba(240, 240, 240, 0.12);
+        --stroke-3: rgba(240, 240, 240, 0.08);
+        --link: #6cb0ff;
+        --info: #70b0d8;
+        --info-bg: rgba(112, 176, 216, 0.09);
+        --warning: #f0a040;
+        --warning-bg: rgba(240, 160, 64, 0.1);
+        --success: #52b896;
+        --success-bg: rgba(82, 184, 150, 0.09);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+    }
+    #root { max-width: 1240px; margin: 0 auto; padding: 32px 24px 56px; }
+    @media (max-width: 640px) { #root { padding: 20px 14px 40px; } }
+
+    .cv-stack { display: flex; flex-direction: column; min-width: 0; }
+    .cv-row { display: flex; flex-direction: row; min-width: 0; }
+
+    .cv-text { margin: 0; }
+    .cv-body { font-size: 14px; line-height: 21px; }
+    .cv-small { font-size: 13px; line-height: 20px; }
+    .cv-tone-primary { color: var(--fg); }
+    .cv-tone-secondary { color: var(--fg-2); }
+    .cv-tone-tertiary { color: var(--fg-3); }
+    .cv-tone-quaternary { color: var(--fg-4); }
+    .cv-w-normal { font-weight: 400; }
+    .cv-w-medium { font-weight: 500; }
+    .cv-w-semibold { font-weight: 600; }
+    .cv-w-bold { font-weight: 700; }
+    .cv-italic { font-style: italic; }
+
+    .cv-h1 { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.01em; }
+    .cv-h2 { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+    @media (max-width: 640px) { .cv-h1 { font-size: 21px; line-height: 28px; } }
+
+    .cv-link { color: var(--link); text-decoration: none; }
+    .cv-link:hover { text-decoration: underline; }
+
+    .cv-pill {
+      appearance: none;
+      font: inherit;
+      font-size: 13px;
+      line-height: 18px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--stroke-2);
+      background: transparent;
+      color: var(--fg-3);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cv-pill:hover { color: var(--fg-2); background: var(--fill-4); }
+    .cv-pill.is-active { color: var(--fg); background: var(--fill-2); border-color: transparent; font-weight: 500; }
+    .cv-pill:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+    .cv-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .cv-table-wrap.is-framed { border: 1px solid var(--stroke-2); border-radius: 8px; }
+    .cv-table { border-collapse: collapse; width: 100%; }
+    .cv-table th {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      color: var(--fg-2);
+      text-align: left;
+      vertical-align: bottom;
+      padding: 9px 12px;
+      background: var(--fill-4);
+      border-bottom: 1px solid var(--stroke-2);
+    }
+    .cv-table td { padding: 10px 12px; vertical-align: top; border-top: 1px solid var(--stroke-3); }
+    .cv-table tbody tr:first-child td { border-top: 0; }
+    .cv-table.is-striped tbody tr:nth-child(even) td { background: var(--fill-4); }
+    .cv-table ul { color: var(--fg-3); }
+
+    .cv-callout { display: flex; gap: 10px; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--stroke-3); }
+    .cv-callout-icon { flex: none; display: flex; width: 16px; height: 18px; align-items: center; }
+    .cv-callout-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .cv-callout-title { font-size: 14px; line-height: 18px; font-weight: 600; }
+    .cv-callout-info, .cv-callout-neutral { background: var(--info-bg); }
+    .cv-callout-info .cv-callout-icon, .cv-callout-neutral .cv-callout-icon { color: var(--info); }
+    .cv-callout-warning, .cv-callout-danger { background: var(--warning-bg); }
+    .cv-callout-warning .cv-callout-icon, .cv-callout-danger .cv-callout-icon { color: var(--warning); }
+    .cv-callout-success { background: var(--success-bg); }
+    .cv-callout-success .cv-callout-icon { color: var(--success); }
+
+    .cv-collapsible-header {
+      appearance: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      padding: 4px 0;
+      border: 0;
+      background: none;
+      font: inherit;
+      color: var(--fg);
+      cursor: pointer;
+      text-align: left;
+    }
+    .cv-collapsible-title { font-size: 14px; line-height: 20px; font-weight: 600; }
+    .cv-collapsible-count { font-size: 12px; color: var(--fg-3); }
+    .cv-collapsible-trailing { margin-left: auto; font-size: 12px; color: var(--fg-3); }
+    .cv-collapsible-body { padding: 8px 0 0 18px; }
+    .cv-chevron { flex: none; color: var(--fg-3); transition: transform 0.15s ease; }
+    .cv-chevron.is-open { transform: rotate(90deg); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <noscript>需要开启 JavaScript 才能查看这个页面。</noscript>
+  <script>__BUNDLE__</script>
+</body>
+</html>
